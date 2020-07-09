@@ -11,3 +11,6 @@ then
 else
 	echo "employee is not present"
 fi
+WageperHr=20
+Fullday=8
+empdailyWage=$(( $WageperHr*$Fullday ))
