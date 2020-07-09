@@ -14,3 +14,5 @@ fi
 WageperHr=20
 Fullday=8
 empdailyWage=$(( $WageperHr*$Fullday ))
+PartTime=4
+empPartTimeWage=$(( $WageperHr*$PartTime ))
