@@ -26,10 +26,13 @@ function getWorkHrs() {
 	                ;;
 	esac
 }
+declare -a empdailyWage
 while [ $totalempHrs -lt 100 -a $totalworkingDays -lt 20 ]
 do
 	getWorkHrs $(( RANDOM % 3 ))
 	totalempHrs=$(($totalempHrs + $empHrs))
+	empdailyWage[ $totalworkingDays ]=$(( $empHrs*$WageperHr ))
 	((totalworkingDays++))
 done
 empTotalWage=$(( $totalempHrs*$WageperHr ))
+
