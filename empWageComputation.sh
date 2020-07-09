@@ -2,17 +2,24 @@
 
 
 echo "Welcome to Employmee wage calculation program"
-isPresent=1
-isAbsent=0
-empCheck=$(( RANDOM % 2 ))
-if [ $empCheck -eq $isPresent ]
-then
-	echo "employee is present"
-else
-	echo "employee is not present"
-fi
 WageperHr=20
-Fullday=8
-empdailyWage=$(( $WageperHr*$Fullday ))
-PartTime=4
-empPartTimeWage=$(( $WageperHr*$PartTime ))
+isPartTime=2
+isFulltime=1
+isAbsent=0
+empHrs=0
+checkemp=$(( RANDOM % 3 ))
+case $checkemp in
+        $isPartTime)
+                empHrs=4
+
+                ;;
+        $isFulltime)
+                empHrs=8
+
+                ;;
+        *)
+                empHrs=0
+
+                ;;
+esac
+empdailyWage=$(( $empHrs*$WageperHr ))
