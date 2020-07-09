@@ -9,9 +9,8 @@ isAbsent=0
 empHrs=0
 totalempHrs=0
 totalworkingDays=0
-while [ $totalempHrs -lt 100 -a $totalworkingDays -lt 20 ]
-do
-	checkemp=$(( RANDOM % 3 ))
+function getWorkHrs() {
+	checkemp=$1
 	case $checkemp in
 	        $isPartTime)
 	                empHrs=4
@@ -26,6 +25,10 @@ do
 
 	                ;;
 	esac
+}
+while [ $totalempHrs -lt 100 -a $totalworkingDays -lt 20 ]
+do
+	getWorkHrs $(( RANDOM % 3 ))
 	totalempHrs=$(($totalempHrs + $empHrs))
 	((totalworkingDays++))
 done
