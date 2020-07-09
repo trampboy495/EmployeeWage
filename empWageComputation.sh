@@ -7,19 +7,26 @@ isPartTime=2
 isFulltime=1
 isAbsent=0
 empHrs=0
-checkemp=$(( RANDOM % 3 ))
-case $checkemp in
-        $isPartTime)
-                empHrs=4
+totalempHrs=0
+totalworkingDays=0
+while [ $totalworkingDays -lt 20 ]
+do
+	checkemp=$(( RANDOM % 3 ))
+	case $checkemp in
+	        $isPartTime)
+	                empHrs=4
 
-                ;;
-        $isFulltime)
-                empHrs=8
+	                ;;
+	        $isFulltime)
+	                empHrs=8
 
-                ;;
-        *)
-                empHrs=0
+	                ;;
+	        *)
+	                empHrs=0
 
-                ;;
-esac
-empdailyWage=$(( $empHrs*$WageperHr ))
+	                ;;
+	esac
+	totalempHrs=$(($totalempHrs + $empHrs))
+	((totalworkingDays++))
+done
+empMonthlyWage=$(( $totalempHrs*$WageperHr ))
