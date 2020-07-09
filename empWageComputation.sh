@@ -9,7 +9,7 @@ isAbsent=0
 empHrs=0
 totalempHrs=0
 totalworkingDays=0
-while [ $totalworkingDays -lt 20 ]
+while [ $totalempHrs -lt 100 -a $totalworkingDays -lt 20 ]
 do
 	checkemp=$(( RANDOM % 3 ))
 	case $checkemp in
@@ -29,4 +29,4 @@ do
 	totalempHrs=$(($totalempHrs + $empHrs))
 	((totalworkingDays++))
 done
-empMonthlyWage=$(( $totalempHrs*$WageperHr ))
+empTotalWage=$(( $totalempHrs*$WageperHr ))
